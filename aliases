@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Add this line to .zshrc file to import aliases: source $HOME/.aliases
+
+alias bashconfig="vim ~/linux-dotfiles/.bashrc"
+
+alias ls="ls --color=always"
+alias ll="ls -lhaGtr --color=always"
+alias k="kubectl"
+alias kg="kubectl get"
+alias kc="kubectl config"
+alias dc="docker compose"
+# alias ipython="$HOME/$SCRIPTS_DIR/start_ipython.sh"
+alias kssh="kitten ssh"
+alias dps="docker container ls -a"
+
+# Go
+alias gore="~/go/bin/gore"
+
+# Git
+alias gco="git checkout "
+alias gb="git branch "
+alias gl="git log"
+alias gs="git status"
+
+# Aliases for common dirs
+alias home="cd ~"
+
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias d="dirs -v"
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
