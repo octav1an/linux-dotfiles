@@ -2,7 +2,7 @@
 set -eu
 
 CONFIG_DIR=$HOME/.config
-DOTFILES_DIR=$HOME/linux-dotfiles
+DOTFILES_DIR=$HOME/.dotfiles
 
 
 make_symlinks() {
@@ -37,9 +37,15 @@ make_symlinks "$DOTFILES_DIR/config" "${os_specific_configs[@]}"
 # Configs from home
 TARGET_RC=$HOME/.bashrc
 SOURCE_RC=$DOTFILES_DIR/.bashrc
-if [ -e "$TARGET_RC" ]; then
+
+
+if [ "$(readlink "$TARGET_RC")" == "$SOURCE_RC" ]; then
+  echo "$TARGET_RC already linked correctly"
+else
   echo "removing existing config: $TARGET_RC"
-  rm -f -- "${TARGET_RC:?}"
+  rm -f -- "$TARGET_RC"
+  echo "linking $SOURCE_RC -> $TARGET_RC"
+  ln -s -- "$SOURCE_RC" "$TARGET_RC"
 fi
-echo "linking $SOURCE_RC -> $TARGET_RC"
-ln -s -- "$SOURCE_RC" "$TARGET_RC"
+
+echo "✅ Symlinks updated successfully."

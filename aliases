@@ -2,7 +2,7 @@
 
 # Add this line to .zshrc file to import aliases: source $HOME/.aliases
 
-alias bashconfig="vim ~/linux-dotfiles/.bashrc"
+alias bashconfig="vim ~/.dotfiles/.bashrc"
 
 alias ls="ls --color=always"
 alias ll="ls -lhaGtr --color=always"
@@ -11,7 +11,6 @@ alias kg="kubectl get"
 alias kc="kubectl config"
 alias dc="docker compose"
 # alias ipython="$HOME/$SCRIPTS_DIR/start_ipython.sh"
-alias kssh="kitten ssh"
 alias dps="docker container ls -a"
 
 # Go
