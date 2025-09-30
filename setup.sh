@@ -2,7 +2,7 @@
 # Setup the minimum required for a fresh headless linux
 
 package_manager () {
-    apt -y "$@"
+    apt install -y "$@"
 }
 
 package_manager vim
