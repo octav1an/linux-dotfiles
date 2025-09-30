@@ -31,15 +31,15 @@ make_symlinks() {
 }
 
 # OS specific configs 
-MY_CONFIG_DIR=$DOTFILES_DIR/config
 os_specific_configs=()
-make_symlinks "$MY_CONFIG_DIR" "${os_specific_configs[@]}"
+make_symlinks "$DOTFILES_DIR/config" "${os_specific_configs[@]}"
 
 # Configs from home
-BASHRC=".bashrc"
-if [ -e "$HOME/$BASHRC" ]; then
-  echo "removing existing config for '$BASHRC'"
-  rm -r "${HOME:?}/${BASHRC:?}"
+TARGET_RC=$HOME/.bashrc
+SOURCE_RC=$DOTFILES_DIR/.bashrc
+if [ -e "$TARGET_RC" ]; then
+  echo "removing existing config: $TARGET_RC"
+  rm -f -- "${TARGET_RC:?}"
 fi
-echo "updating '.bashrc'"
-ln -s "$DOTFILES_DIR/$BASHRC" "$HOME/$BASHRC"
+echo "linking $SOURCE_RC -> $TARGET_RC"
+ln -s -- "$SOURCE_RC" "$TARGET_RC"
