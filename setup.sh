@@ -9,4 +9,5 @@ package_manager vim
 package_manager fzf
 package_manager tree
 package_manager bat
+package_manager rsync
 
