@@ -29,5 +29,3 @@ alias home="cd ~"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias d="dirs -v"
-for index ({1..9}) alias "$index"="cd +${index}"; unset index
