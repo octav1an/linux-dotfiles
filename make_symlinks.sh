@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eu
 
-CONFIG_DIR=~/.config
-DOTFILES_DIR=~/linux-dotfiles
+CONFIG_DIR=$HOME/.config
+DOTFILES_DIR=$HOME/linux-dotfiles
 
 
 make_symlinks() {
@@ -31,15 +31,15 @@ make_symlinks() {
 }
 
 # OS specific configs 
-CONFIG_DIR=$DOTFILE_DIR/config
+MY_CONFIG_DIR=$DOTFILES_DIR/config
 os_specific_configs=()
-make_symlinks "$CONFIG_DIR" "${os_specific_configs[@]}"
+make_symlinks "$MY_CONFIG_DIR" "${os_specific_configs[@]}"
 
 # Configs from home
 BASHRC=".bashrc"
-if [ -f "~/$BASHRC" ]; then
+if [ -e "$HOME/$BASHRC" ]; then
   echo "removing existing config for '$BASHRC'"
-  rm -r ~/$BASHRC
+  rm -r "${HOME:?}/${BASHRC:?}"
 fi
 echo "updating '.bashrc'"
-ln -s $DOTFILE_DIR/.bashrc ~/$BASHRC
+ln -s "$DOTFILES_DIR/$BASHRC" "$HOME/$BASHRC"
