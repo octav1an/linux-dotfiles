@@ -6,6 +6,8 @@ alias bashconfig="vim ~/.dotfiles/.bashrc"
 
 alias ls="ls --color=always"
 alias ll="ls -lhaGtr --color=always"
+alias bat="batcat"
+
 alias k="kubectl"
 alias kg="kubectl get"
 alias kc="kubectl config"
