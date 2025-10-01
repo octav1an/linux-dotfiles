@@ -1,51 +1,43 @@
 #!/bin/bash
 set -eu
 
-CONFIG_DIR=$HOME/.config
-DOTFILES_DIR=$HOME/.dotfiles
+# Makes a symlink from the source to the target if it doesn't exit
+# Usage:
+#   make_symlink <source> <target>
+# Arguments:
+#   source    Source file or dir
+#   target    Target file or dir
+make_symlink() {
+  local source_item=$1
+  local target_item=$2
 
+  if [ "$(readlink "$target_item" 2>/dev/null)" = "$source_item" ]; then
+    echo "$target_item already linked correctly"
+    return 0
+  fi
 
-make_symlinks() {
-  base_dotfiles_path=$1
-  shift
-  arr=("$@")
+  # Remove any exiting file before linking, -L will catch broken links that -e doesn't
+  if [ -e "$target_item" ] || [ -L "$target_item" ]; then
+    echo "removing existing config: $target_item"
+    rm -rf -- "${target_item:?}"
+  fi
 
-  for config in "${arr[@]}"
-  do
-    if [ -e "${CONFIG_DIR:?}/${config:?}" ]; then
-        echo "removing existing config for '$config'"
-        rm -rf "${CONFIG_DIR:?}/${config:?}"
-    fi
-
-    config_path="$base_dotfiles_path/${config}"
-
-    # Check if the file exists
-    if [ ! -e "$config_path" ]; then
-      echo "error: '$config_path' dotfile doesn't exit. Exiting..."
-      exit 1
-    fi
-
-    echo "updating '$config'"
-    ln -s "$config_path" "$CONFIG_DIR/${config}"
-  done
+  echo "linking $source_item -> $target_item"
+  ln -s -- "$source_item" "$target_item"
 }
 
-# OS specific configs 
-os_specific_configs=()
-make_symlinks "$DOTFILES_DIR/config" "${os_specific_configs[@]}"
+DOTFILES_DIR=$HOME/.dotfiles
 
-# Configs from home
-TARGET_RC=$HOME/.bashrc
-SOURCE_RC=$DOTFILES_DIR/.bashrc
+# Config mapping  "source relative path-->target absolute path"
+configs=( 
+  ".bashrc-->$HOME/.bashrc"
+)
 
-
-if [ "$(readlink "$TARGET_RC")" == "$SOURCE_RC" ]; then
-  echo "$TARGET_RC already linked correctly"
-else
-  echo "removing existing config: $TARGET_RC"
-  rm -f -- "$TARGET_RC"
-  echo "linking $SOURCE_RC -> $TARGET_RC"
-  ln -s -- "$SOURCE_RC" "$TARGET_RC"
-fi
+for pair in "${configs[@]}"
+do
+  source_path=$DOTFILES_DIR/${pair%%-->*}
+  target_path=${pair##*-->}
+  make_symlink "$source_path" "$target_path"
+done
 
 echo "✅ Symlinks updated successfully."
