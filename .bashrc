@@ -14,6 +14,9 @@ HISTCONTROL=ignoreboth
 HISTSIZE=5000
 HISTFILESIZE=10000
 
+# Number of Ctrl+D presses required to exit
+IGNOREEOF=99
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
