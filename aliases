@@ -23,6 +23,7 @@ alias gco="git checkout "
 alias gb="git branch "
 alias gl="git log"
 alias gs="git status"
+alias gc="git commit -m "
 
 # Aliases for common dirs
 alias home="cd ~"

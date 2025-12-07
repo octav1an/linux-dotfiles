@@ -89,3 +89,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+PAGER=less
+# Wrapper with pager
+firewall-cmd() {
+    command firewall-cmd "$@" | $PAGER -F
+}
