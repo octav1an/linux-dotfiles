@@ -1,10 +1,11 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
-export XDG_CONFIG_HOME="$HOME/.config"
 PAGER=less
 DOTFILES_DIR=$HOME/.dotfiles
 
