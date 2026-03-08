@@ -4,6 +4,7 @@ case $- in
       *) return;;
 esac
 
+export XDG_CONFIG_HOME="$HOME/.config"
 PAGER=less
 DOTFILES_DIR=$HOME/.dotfiles
 
