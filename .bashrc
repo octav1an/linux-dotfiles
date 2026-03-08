@@ -15,17 +15,20 @@ HISTFILESIZE=20000
 # Number of Ctrl+D presses required to exit
 IGNOREEOF=99
 
-# check the window size after each command and, if necessary,
+# check the window size after each command and, if necessary
 shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
+# Set up fzf key bindings and fuzzy completion
+source /usr/share/doc/fzf/examples/key-bindings.bash
+
 # Set a bold green user@host, a blue directory, and a reset color for the command
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-# Optional: Set the window title (the tab name in your terminal app)
+# Set the window title (the tab name in your terminal app)
 case "$TERM" in
     xterm*|rxvt*) PS1="\[\e]0;\u@\h: \w\a\]$PS1" ;;
 esac
