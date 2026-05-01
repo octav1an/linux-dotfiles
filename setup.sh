@@ -11,6 +11,7 @@ package_manager tree
 package_manager bat
 package_manager rsync
 package_manager tmux
+package_manager nmap
 
 # Setup tmux tpm
 TPM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/tmux/plugins/tpm"
