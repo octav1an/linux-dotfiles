@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Add this line to .zshrc file to import aliases: source $HOME/.aliases
+# Add this line to .bashrc file to import aliases: source $HOME/.aliases
 
 alias bashconfig="vim ~/.dotfiles/.bashrc"
 
@@ -12,7 +12,6 @@ alias k="kubectl"
 alias kg="kubectl get"
 alias kc="kubectl config"
 alias dc="docker compose"
-# alias ipython="$HOME/$SCRIPTS_DIR/start_ipython.sh"
 alias dps="docker container ls -a"
 
 # Go
@@ -26,7 +25,6 @@ alias gs="git status"
 alias gc="git commit -m "
 
 # Aliases for common dirs
-alias home="cd ~"
 
 # Navigation
 alias ..="cd .."
