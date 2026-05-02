@@ -1,0 +1,3 @@
+[submodule "conf-aliases"]
+	path = conf-aliases
+	url = git@github.com:octav1an/conf-aliases.git
