@@ -30,7 +30,7 @@ DOTFILES_DIR=$HOME/.dotfiles
 
 # Config mapping  "source relative path-->target absolute path"
 configs=( 
-  ".bashrc-->$HOME/.bashrc"
+  "bashrc-->$HOME/.bashrc"
   "tmux.conf-->$HOME/.tmux.conf"
 )
 
