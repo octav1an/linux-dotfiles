@@ -43,7 +43,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f "$DOTFILES_DIR/conf-aliases/aliases" ]; then
+if [ -f "$DOTFILES_DIR/conf-common/aliases" ]; then
     source "$DOTFILES_DIR/conf-aliases/aliases"
 fi
 
