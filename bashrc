@@ -7,7 +7,7 @@ case $- in
 esac
 
 PAGER=less
-DOTFILES_DIR=$HOME/.dotfiles
+DOTFILES=$HOME/.dotfiles
 
 shopt -s histappend # append to the history file, don't overwrite it
 HISTCONTROL=ignoreboth
@@ -43,8 +43,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f "$DOTFILES_DIR/conf-common/aliases" ]; then
-    source "$DOTFILES_DIR/conf-common/aliases"
+if [ -f "$DOTFILES/conf-common/aliases" ]; then
+    source "$DOTFILES/conf-common/aliases"
 fi
 
 # Wrapper with pager
