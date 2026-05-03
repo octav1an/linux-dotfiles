@@ -44,7 +44,7 @@ if ! shopt -oq posix; then
 fi
 
 if [ -f "$DOTFILES_DIR/conf-common/aliases" ]; then
-    source "$DOTFILES_DIR/conf-aliases/aliases"
+    source "$DOTFILES_DIR/conf-common/aliases"
 fi
 
 # Wrapper with pager
